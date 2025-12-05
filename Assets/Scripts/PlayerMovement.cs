@@ -6,14 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     private Rigidbody2D body;
-    private Animator anim;
+    private Animator animator;
     private bool grounded;
 
     private void Awake()
     {
         //Grab references for rigidbody and animator from object
         body = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -32,14 +32,14 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Set animation parameters
-        anim.SetBool("run", horizontalInput != 0);
-        anim.SetBool("grounded", grounded);
+        animator.SetBool("run", horizontalInput != 0);
+        animator.SetBool("grounded", grounded);
     }
 
     private void Jump() 
     {
         body.velocity = new Vector2(body.velocity.x, speed);
-        anim.SetTrigger("jump");
+        animator.SetTrigger("jump");
         grounded = false;
     }
 
